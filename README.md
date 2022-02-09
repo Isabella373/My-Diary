@@ -1,10 +1,33 @@
-# My Personal Project
+# Diary
 
-## A subtitle
+## What the application can do?
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
 
-An example of text with **bold** and *italic* fonts.  
+- Record daily events, thoughts and feelings through pictures, videos, meme and words. 
+
+- Track daily spending, and monthly reflect proportion to help manage personal finances
+
+
+
+
+## Why is this project of interest to me?
+
+
+- Marquez once said,"What matters in life is not what happens to you,but what you remember." There are many beautiful moments and feelings that worth recording. And diary allows us to record whenever and wherever. 
+- I like keeping dairy. It is a fantastic way to express all the frustrated feeling and release my pressure.
+- Nowadays, people record and share their life through social media, but sometimes what we share is not always our real life and real feeling. Diary can create a secret space for your own.
+- I always found that my money in the bank secretly disappear in a fantastic speed. Diary can help you record when and how you spend money. It is very convenient, just add an entry and short description to your diary. You can also know the proportion you spend for each aspect, education,entertainment...
+
+## User Stories
+- As a user, I want to be able to add words to my Today's diary
+- As a user, I want to be able to create a new Today's diary with dates
+- As a user, I want to be able to add spending record with tags,amount,description,time to my Today's diary
+- As a user, I want to be able to calculate the total money spent every month
+- As a user, I want to be able to add multiple new today's diary to the previous diary test
+
+
+
+
+## In the end
+It is an application for everyone who would like to record daily life and spending 
+
