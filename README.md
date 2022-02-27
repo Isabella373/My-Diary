@@ -25,6 +25,13 @@
 - As a user, I want to be able to calculate the total money spent every month
 - As a user, I want to be able to add multiple new today's diary to the previous diary test
 
+- As a user, I want to be able to save my diary to file
+- As a user, I want to be able to load my diary from file
+- As a user, when I select the quit option from the application menu, I want to be
+- reminded to save my diary list to file and have the option to do so or not.
+- As a user, when I start the application, I want to be given the option to load my diary 
+- from file.
+- 
 
 
 
