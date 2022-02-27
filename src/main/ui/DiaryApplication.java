@@ -133,7 +133,7 @@ public class DiaryApplication {
         description = input.next();
         sp.addDescription(description);
         newDiary.addSpending(sp);
-        System.out.println("Successfully added");
+        System.out.println("Successfully add the Spending");
     }
 
 
