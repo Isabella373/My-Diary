@@ -23,9 +23,9 @@ public class PreviousDiaryTest {
 
     @BeforeEach
     void runBefore2() {
-        testDiary1 = new TodayDiary();
+        testDiary1 = new TodayDiary(0);
         testDiary1.addWords("Happy!");
-        testDiary2 = new TodayDiary();
+        testDiary2 = new TodayDiary(0);
         testDiary2.addWords("OMG!So much homework today!!");
     }
 

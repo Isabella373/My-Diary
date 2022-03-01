@@ -4,6 +4,7 @@ package ui;
 import model.PreviousDiary;
 import model.Spending;
 import model.TodayDiary;
+import persistence.JsonWriter;
 
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class DiaryApplication {
     private Scanner input;
     PreviousDiary previousDiary;
     TodayDiary newDiary;
+    JsonWriter jsonWriter;
 
     //EFFECTS: runs the diary application
     public DiaryApplication() {
@@ -65,7 +67,7 @@ public class DiaryApplication {
 
     private void init() {
         previousDiary = new PreviousDiary();
-        newDiary = new TodayDiary();
+        newDiary = new TodayDiary(0);
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }

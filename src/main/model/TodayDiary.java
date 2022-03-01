@@ -1,28 +1,36 @@
 package model;
 
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
-
-public class TodayDiary {
-    LocalDate date;
+public class TodayDiary implements Writable {
+    Number date;
     String words;
     ArrayList<Spending> spending;
+    private List<Thingy> thingies;
 
 
-    public TodayDiary() {
-        this.date = LocalDate.now();
+    public TodayDiary(Number n) {
+        n = LocalDate.now().getDayOfYear();
+        this.date = n;
         this.words = "";
         this.spending = new ArrayList<>();
+        thingies = new ArrayList<>();
 
 
     }
 
 
     //EFFECTS: get the date
-    public LocalDate getDate() {
+    public Number getDate() {
         return this.date;
     }
 
@@ -73,5 +81,33 @@ public class TodayDiary {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: add thingy to this TodayDiary
+    public void addThingy(Thingy thingy) {
+        thingies.add(thingy);
+    }
 
+    // EFFECTS: return an unmodifiable list of thingies in the TodayDiary
+    public List<Thingy> getThingies() {
+        return Collections.unmodifiableList(thingies);
+    }
+
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("number", date);
+        json.put("thingies", thingiesTOJson());
+        return null;
+    }
+
+    private JSONArray thingiesTOJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Thingy t : thingies) {
+            jsonArray.put(t.toJson());
+        }
+
+        return jsonArray;
+    }
 }

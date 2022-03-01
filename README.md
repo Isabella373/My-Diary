@@ -22,8 +22,8 @@
 - As a user, I want to be able to add words to my Today's diary
 - As a user, I want to be able to create a new Today's diary with dates
 - As a user, I want to be able to add spending record with tags,amount,description,time to my Today's diary
-- As a user, I want to be able to calculate the total money spent every month
-- As a user, I want to be able to add multiple new today's diary to the previous diary test
+- As a user, I want to be able to calculate the total money spent in the Today Diary
+
 
 - As a user, I want to be able to save my diary to file
 - As a user, I want to be able to load my diary from file

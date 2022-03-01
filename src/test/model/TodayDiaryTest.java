@@ -15,7 +15,7 @@ public class TodayDiaryTest {
 
     @BeforeEach
     void runBefore() {
-        testDiary = new TodayDiary();
+        testDiary = new TodayDiary(0);
         testSp1 = new Spending();
         testSp1.addAmount(200);
         testSp2 = new Spending();
