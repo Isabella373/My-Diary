@@ -1,0 +1,15 @@
+{
+    "name": "My diary",
+    "diaries": [
+        {
+            "title": "Monday",
+            "category": "HAPPY",
+            "story": ""
+        },
+        {
+            "title": "Tuesday",
+            "category": "SAD",
+            "story": ""
+        }
+    ]
+}

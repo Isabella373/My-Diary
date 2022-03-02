@@ -1,5 +1,6 @@
 package persistence;
 
+import model.PreviousDiary;
 import model.TodayDiary;
 import org.json.JSONObject;
 
@@ -26,8 +27,8 @@ public class JsonWriter {
 
     // MODIFIES: this
     // EFFECTS: writes JSON representation of TodayDiary to file
-    public void write(TodayDiary td) {
-        JSONObject json = td.toJson();
+    public void write(PreviousDiary pd) {
+        JSONObject json = pd.toJson();
         saveToFile(json.toString(TAB));
     }
 

@@ -13,28 +13,29 @@ public class PreviousDiaryTest {
 
     @BeforeEach
     void runBefore() {
-        testDiaryList = new PreviousDiary();
+        testDiaryList = new PreviousDiary("Bella's Diary");
     }
 
     @Test
     void testConstructor() {
+        assertEquals("Bella's Diary", testDiaryList.getName());
         assertEquals(0, testDiaryList.getPreviousDiary().size());
     }
 
     @BeforeEach
     void runBefore2() {
-        testDiary1 = new TodayDiary(0);
-        testDiary1.addWords("Happy!");
-        testDiary2 = new TodayDiary(0);
+        testDiary1 = new TodayDiary("Tuesday", Category.SAD);
+        testDiary1.addWords("Not Happy!");
+        testDiary2 = new TodayDiary("Wednesday", Category.ANGRY);
         testDiary2.addWords("OMG!So much homework today!!");
     }
 
     @Test
-    void testGetDiary() {
-        testDiaryList.getPreviousDiary().add(testDiary1);
-        assertEquals(testDiary1,testDiaryList.getDiary(1));
-        testDiaryList.getPreviousDiary().add(testDiary2);
-        assertEquals(testDiary2,testDiaryList.getDiary(2));
+    void testAddDiary() {
+        testDiaryList.addDiary(testDiary1);
+        assertEquals(testDiary1,testDiaryList.getPreviousDiary().get(0));
+        testDiaryList.addDiary(testDiary2);
+        assertEquals(testDiary2,testDiaryList.getPreviousDiary().get(1));
 
 
 

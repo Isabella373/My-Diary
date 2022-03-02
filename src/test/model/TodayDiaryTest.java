@@ -5,31 +5,25 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
+import static model.Category.HAPPY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TodayDiaryTest {
     private TodayDiary testDiary;
-    private Spending testSp1;
-    private Spending testSp2;
-    private Spending testSp3;
 
     @BeforeEach
     void runBefore() {
-        testDiary = new TodayDiary(0);
-        testSp1 = new Spending();
-        testSp1.addAmount(200);
-        testSp2 = new Spending();
-        testSp1.addAmount(20);
-        testSp3 = new Spending();
-        testSp1.addAmount(1);
+        testDiary = new TodayDiary("Monday", HAPPY);
+
 
     }
 
     @Test
     void testConstructor() {
+        assertEquals("Monday", testDiary.getTitle());
         assertEquals("", testDiary.getWords());
-        assertEquals(LocalDate.now(), testDiary.getDate());
-        assertEquals(0, testDiary.getSpendingList().size());
+        assertEquals(HAPPY, testDiary.getCategory());
+
     }
 
     @Test
@@ -42,21 +36,10 @@ public class TodayDiaryTest {
     }
 
     @Test
-    void testAddSpending() {
-        testDiary.addSpending(testSp1);
-        testDiary.addSpending(testSp2);
-        assertEquals(testSp1, testDiary.getSpending(1));
-        assertEquals(testSp2, testDiary.getSpending(2));
-
+    void testToString() {
+        testDiary.addWords("I am Happy today!");
+        assertEquals("HAPPY: Monday---I am Happy today!", testDiary.toString());
     }
 
-    @Test
-    void testSpendingPerDay() {
-        testDiary.addSpending(testSp1);
-        testDiary.addSpending(testSp2);
-        testDiary.addSpending(testSp3);
-        assertEquals(221, testDiary.spendingPerDay());
 
-
-    }
 }

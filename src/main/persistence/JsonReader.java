@@ -1,8 +1,8 @@
 package persistence;
 
 
-import model.Spending;
-import model.Thingy;
+import model.Category;
+import model.PreviousDiary;
 import model.TodayDiary;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -12,7 +12,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
-
 
 
 // Represent a reader that reads TodayDiary from JSON data stored in file
@@ -26,10 +25,10 @@ public class JsonReader {
 
     // EFFECTS: reads TodayDiaries from the file and returns it;
     // throws IOException if an error occurs reading data from file
-    public TodayDiary read() throws IOException {
+    public PreviousDiary read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
-        return parseTodayDiary(jsonObject);
+        return parsePreviousDiary(jsonObject);
     }
 
     // EFFECTS: reads source file as string and returns it
@@ -44,33 +43,31 @@ public class JsonReader {
     }
 
     // EFFECTS: parses TodayDiary from JSon object and returns it
-    private TodayDiary parseTodayDiary(JSONObject jsonObject) {
-        Number number = jsonObject.getNumber("number");
-        String story = jsonObject.getString("story");
-        TodayDiary td = new TodayDiary(number);
-        addThingies(td, jsonObject);
-        return td;
+    private PreviousDiary parsePreviousDiary(JSONObject jsonObject) {
+        String name = jsonObject.getString("name");
+        PreviousDiary pd = new PreviousDiary(name);
+        addDiaries(pd, jsonObject);
+        return pd;
 
     }
 
+    // MODIFIES: pd
+    // EFFECTS: parses diaries from JSON object and adds them to the previous diary
 
-    // MODIFIES: td
-    // EFFECTS: parses things from JSON object and adds them to TodayDiary
-    private void addThingies(TodayDiary td, JSONObject jsonObject) {
-        JSONArray jsonArray = jsonObject.getJSONArray("thingies");
-        for (Object json: jsonArray) {
+    private void addDiaries(PreviousDiary pd, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("diaries");
+        for (Object json : jsonArray) {
             JSONObject nextThingy = (JSONObject) json;
-            addToDiaries(td, nextThingy);
+            addDiary(pd, nextThingy);
+
         }
     }
 
-    // MODIFIES: td
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
-    private void addToDiaries(TodayDiary td, JSONObject jsonObject) {
-        Number number = jsonObject.getNumber("number");
-        String story = jsonObject.getString("string");
-        Thingy thingy = new Thingy(number, story);
-        td.addThingy(thingy);
+    private void addDiary(PreviousDiary pd, JSONObject jsonObject) {
+        String title = jsonObject.getString("title");
+        Category category = Category.valueOf(jsonObject.getString("category"));
+        TodayDiary td = new TodayDiary(title, category);
+        pd.addDiary(td);
     }
 
 }
