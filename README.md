@@ -20,9 +20,9 @@
 
 ## User Stories
 - As a user, I want to be able to add words to my Today's diary
-- As a user, I want to be able to create a new Today's diary with dates
-- As a user, I want to be able to add spending record with tags,amount,description,time to my Today's diary
-- As a user, I want to be able to calculate the total money spent in the Today Diary
+- As a user, I want to be able to create a new Today's diary with time
+- As a user, I want to be able to add my feeling to the new diary
+- As a user, I want to be able to add my diaries to the previous diaries list
 
 
 - As a user, I want to be able to save my diary to file

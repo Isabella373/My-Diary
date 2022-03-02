@@ -61,6 +61,7 @@ public class JsonReader {
 
         }
     }
+
     // MODIFIES: this
     // EFFECTS: add the previous diary to the file
     private void addDiary(PreviousDiary pd, JSONObject jsonObject) {

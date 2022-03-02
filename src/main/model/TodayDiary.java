@@ -2,14 +2,10 @@ package model;
 
 
 
-import org.json.JSONArray;
+
 import org.json.JSONObject;
 import persistence.Writable;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 
 public class TodayDiary implements Writable {
