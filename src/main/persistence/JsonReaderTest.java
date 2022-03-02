@@ -26,7 +26,7 @@ public class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderEmptyPreviousDiary() {
-        JsonReader reader = new JsonReader("./data/testReaderEmptyDiaries.json");
+        JsonReader reader = new JsonReader("./data/testReaderEmptyDiaries.txt");
         try {
             PreviousDiary pd = reader.read();
             assertEquals("My Diary", pd.getName());
@@ -38,7 +38,7 @@ public class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderGeneralDiaries() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralDiaries.json");
+        JsonReader reader = new JsonReader("./data/testReaderGeneralDiaries.txt");
         try {
             PreviousDiary pd = reader.read();
             assertEquals("My Diary", pd.getName());

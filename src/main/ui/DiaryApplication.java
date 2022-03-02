@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 
 public class DiaryApplication {
-    private static final String JSON_STONE = "./data/todaydiary.json";
+    private static final String JSON_STONE = "./data/todaydiary.txt";
     private Scanner input;
     private PreviousDiary previousDiary;
     private JsonWriter jsonWriter;

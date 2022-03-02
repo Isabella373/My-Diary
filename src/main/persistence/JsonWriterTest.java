@@ -31,12 +31,12 @@ public class JsonWriterTest extends JsonTest {
     void testWriterEmptyDiary() {
         try {
             PreviousDiary pd = new PreviousDiary("My diary");
-            JsonWriter writer = new JsonWriter("./data/testWriterEmptyDiaries.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterEmptyDiaries.txt");
             writer.open();
             writer.write(pd);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterEmptyDiaries.json");
+            JsonReader reader = new JsonReader("./data/testWriterEmptyDiaries.txt");
             pd = reader.read();
             assertEquals("My diary", pd.getName());
             assertEquals(0, pd.numDiaries());
@@ -52,12 +52,12 @@ public class JsonWriterTest extends JsonTest {
             PreviousDiary pd = new PreviousDiary("My diary");
             pd.addDiary(new TodayDiary("Monday", HAPPY));
             pd.addDiary(new TodayDiary("Tuesday", SAD));
-            JsonWriter writer = new JsonWriter("./data/testWriterGeneralDiary.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterGeneralDiary.txt");
             writer.open();
             writer.write(pd);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterGeneralDiary.json");
+            JsonReader reader = new JsonReader("./data/testWriterGeneralDiary.txt");
             pd = reader.read();
             assertEquals("My diary", pd.getName());
             List<TodayDiary> diaries = pd.getPreviousDiary();

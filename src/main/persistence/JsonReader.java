@@ -53,7 +53,6 @@ public class JsonReader {
 
     // MODIFIES: pd
     // EFFECTS: parses diaries from JSON object and adds them to the previous diary
-
     private void addDiaries(PreviousDiary pd, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("diaries");
         for (Object json : jsonArray) {
@@ -62,7 +61,8 @@ public class JsonReader {
 
         }
     }
-
+    // MODIFIES: this
+    // EFFECTS: add the previous diary to the file
     private void addDiary(PreviousDiary pd, JSONObject jsonObject) {
         String title = jsonObject.getString("title");
         Category category = Category.valueOf(jsonObject.getString("category"));

@@ -1,0 +1,8 @@
+{
+    "name": "My Diaries",
+    "diaries": [{
+        "title": "8:03 Monday",
+        "category": "HAPPY",
+        "story": "I am doing my project"
+    }]
+}
