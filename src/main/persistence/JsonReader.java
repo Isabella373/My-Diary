@@ -1,7 +1,7 @@
 package persistence;
 
 
-import model.Category;
+import model.Spending;
 import model.Thingy;
 import model.TodayDiary;
 import org.json.JSONArray;
@@ -46,6 +46,7 @@ public class JsonReader {
     // EFFECTS: parses TodayDiary from JSon object and returns it
     private TodayDiary parseTodayDiary(JSONObject jsonObject) {
         Number number = jsonObject.getNumber("number");
+        String story = jsonObject.getString("story");
         TodayDiary td = new TodayDiary(number);
         addThingies(td, jsonObject);
         return td;
@@ -67,8 +68,8 @@ public class JsonReader {
     // EFFECTS: parses thingy from JSON object and adds it to workroom
     private void addToDiaries(TodayDiary td, JSONObject jsonObject) {
         Number number = jsonObject.getNumber("number");
-        Category category = Category.valueOf(jsonObject.getString("category"));
-        Thingy thingy = new Thingy(number, category);
+        String story = jsonObject.getString("string");
+        Thingy thingy = new Thingy(number, story);
         td.addThingy(thingy);
     }
 

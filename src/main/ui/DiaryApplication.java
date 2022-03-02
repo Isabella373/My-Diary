@@ -3,25 +3,33 @@ package ui;
 
 import model.PreviousDiary;
 import model.Spending;
+import model.Thingy;
 import model.TodayDiary;
+import persistence.JsonReader;
 import persistence.JsonWriter;
 
 
-import java.util.ArrayList;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLOutput;
+import java.util.List;
 import java.util.Scanner;
-
-import static java.lang.Long.valueOf;
-import static org.omg.CORBA.ORB.init;
 
 
 public class DiaryApplication {
+    private static final String JSON_STONE = "./data/todaydiary.json";
     private Scanner input;
-    PreviousDiary previousDiary;
-    TodayDiary newDiary;
-    JsonWriter jsonWriter;
+    private PreviousDiary previousDiary;
+    private TodayDiary newDiary;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //EFFECTS: runs the diary application
-    public DiaryApplication() {
+    public DiaryApplication() throws FileNotFoundException {
+        input = new Scanner(System.in);
+        newDiary = new TodayDiary(0);
+        jsonWriter = new JsonWriter(JSON_STONE);
+        jsonReader = new JsonReader(JSON_STONE);
         runDiary();
     }
 
@@ -30,6 +38,7 @@ public class DiaryApplication {
     private void runDiary() {
         boolean keepGoing = true;
         String command = null;
+        input = new Scanner(System.in);
 
         init();
 
@@ -52,12 +61,12 @@ public class DiaryApplication {
     //MODIFIES: this
     //EFFECTS: process user command
     private void processCommand(String command) {
-        if (command.equals("c")) {
+        if (command.equals("v")) {
             viewPastDiary();
-        } else if (command.equals("w")) {
-            addStories();
-        } else if (command.equals("s")) {
-            addSpending();
+        } else if (command.equals("c")) {
+            addDiary();
+        } else if (command.equals("l")) {
+            load();
         } else if (command.equals("a")) {
             calculateSum();
         } else {
@@ -76,49 +85,56 @@ public class DiaryApplication {
     //EFFECTS: display menu of options to user
     private void displayMenu() {
         System.out.println("\nSelect from:");
-        System.out.println("\tc -> View a past diary");
-        System.out.println("\tw -> Add Your Story");
-        System.out.println("\ts -> Add New Spending");
-        System.out.println("\ta -> Total Spending");
+        System.out.println("\tv -> View a past diary");
+        System.out.println("\tc -> Create a new Diary");
+        System.out.println("\tl -> Load a previous diary");
+        System.out.println("\ta -> Calculate Total Spending");
+        System.out.println("\tq -> quit");
 
     }
 
     //MODIFIES: this
     //EFFECTS: create a new diary
     private void viewPastDiary() {
-        System.out.println("Please enter the number of that diary");
-        int num = input.nextInt();
-        if (num > 0) {
-            previousDiary.getDiary(num);
-        } else {
-            System.out.println("Invalid Number!\n");
+
+        List<Thingy> thingies = newDiary.getThingies();
+
+        for (Thingy t : thingies) {
+            System.out.println(t);
         }
 
 
     }
+
 
     //MODIFIES: this
     //EFFECTS: add a story to a new diary
-    private void addStories() {
+    private void addDiary() {
         System.out.println("Please add your stories");
         String str = input.next();
-
-        if (str.length() > 0) {
-            newDiary.addWords(str);
-        } else {
+        while (str.length() == 0) {
             System.out.println("What is your story today?\n");
-
+        }
+        newDiary.addWords(str);
+        System.out.println("Please add your Spending");
+        addSpending();
+        System.out.println("Enter 'save' if you want to save the diary, Enter 'Quit' to quit it");
+        String str3 = input.next();
+        if (str3.equals("save")) {
+            save();
+            System.out.println("Saved successfully");
+        } else {
+            System.out.println("Not saved");
         }
 
     }
-
 
     private void addSpending() {
         Spending sp = new Spending();
         System.out.println("Please add your tag, You may want to choose from" + ":Food,Clothes,Books");
-        String str = input.next();
-        if (str.length() > 0 && str.length() < 10) {
-            sp.addTag(str);
+        String str4 = input.next();
+        if (str4.length() > 0 && str4.length() < 10) {
+            sp.addTag(str4);
         } else {
             System.out.println("Please have a brief tag");
         }
@@ -136,6 +152,28 @@ public class DiaryApplication {
         sp.addDescription(description);
         newDiary.addSpending(sp);
         System.out.println("Successfully add the Spending");
+    }
+
+
+    private void load() {
+        try {
+            newDiary = jsonReader.read();
+            System.out.println("Loaded " + newDiary.getWords() + " from" + JSON_STONE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STONE);
+        }
+
+    }
+
+    private void save() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(newDiary);
+            jsonWriter.close();
+            System.out.println("Saved the diary " + "to " + JSON_STONE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STONE);
+        }
     }
 
 

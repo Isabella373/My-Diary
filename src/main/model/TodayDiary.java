@@ -97,8 +97,10 @@ public class TodayDiary implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("number", date);
+        json.put("string", words);
+        json.put("spending", spending);
         json.put("thingies", thingiesTOJson());
-        return null;
+        return json;
     }
 
     private JSONArray thingiesTOJson() {

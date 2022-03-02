@@ -1,15 +1,20 @@
 package model;
 
+import com.sun.org.apache.xpath.internal.objects.XString;
 import org.json.JSONObject;
 import persistence.Writable;
 
 public class Thingy implements Writable {
     private Number number;
-    private Category category;
+    private String story;
+    private Spending spending;
 
-    public Thingy(Number number, Category category) {
+    public Thingy(Number number, String story) {
         this.number = number;
-        this.category = category;
+        this.story = story;
+
+
+
 
     }
 
@@ -17,20 +22,23 @@ public class Thingy implements Writable {
         return number;
     }
 
-    public Category getCategory() {
-        return category;
+    public String getStory() {
+        return story;
     }
+
+
 
     // EFFECTS: return string representation of this thingy
     public String toString() {
-        return category + ": " + number;
+        return number + ": " + story;
     }
 
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("number", number);
-        json.put("category", category);
+        json.put("story", story);
+        json.put("spending", spending);
         return json;
     }
 }
