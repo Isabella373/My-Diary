@@ -1,4 +1,4 @@
-package persistence;
+package persistance;
 
 import model.Category;
 import model.TodayDiary;

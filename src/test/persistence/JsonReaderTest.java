@@ -4,6 +4,8 @@ import model.Category;
 import model.PreviousDiary;
 import model.TodayDiary;
 import org.junit.jupiter.api.Test;
+import persistance.JsonReader;
+import persistance.JsonTest;
 
 import java.io.IOException;
 import java.util.List;

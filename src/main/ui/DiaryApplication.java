@@ -4,8 +4,9 @@ package ui;
 import model.Category;
 import model.PreviousDiary;
 import model.TodayDiary;
-import persistence.JsonReader;
-import persistence.JsonWriter;
+import persistance.JsonReader;
+import persistance.JsonWriter;
+
 
 
 import java.io.FileNotFoundException;
