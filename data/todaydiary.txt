@@ -1,8 +1,15 @@
 {
     "name": "My Diaries",
-    "diaries": [{
-        "title": "8:03 Monday",
-        "category": "HAPPY",
-        "story": "I am doing my project"
-    }]
+    "diaries": [
+        {
+            "title": "8:00",
+            "category": "SAD",
+            "story": ""
+        },
+        {
+            "title": "6:00",
+            "category": "SAD",
+            "story": "Aaaaaaaa, So hard, Project?!!!"
+        }
+    ]
 }
