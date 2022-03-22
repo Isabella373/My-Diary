@@ -1,111 +1,67 @@
 package ui;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import static ui.UserGUI.init;
 
 public class StartPage extends JFrame {
-    private JPanel contentPane;
-
 
     public static void main(String[] args) {
-        init();
+        StartPage startPage = new StartPage();
     }
+
+
 
     public StartPage() {
+        super("");
 
-        JFrame frame = new JFrame("");
-        frame.setSize(600,2000);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(600, 600);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+        this.setTitle("My Diary");
+        //this.setLayout(null);
 
-        setTitle();
+        JPanel p = addBackground();
+        this.setContentPane(p);
 
-        JPanel panel = new JPanel();
-        frame.add(panel);
-
-        // setting the width and the height of frame
-/*
-        JLayeredPane lp = new JLayeredPane();
-        JPanel jp = new JPanel();
-        JLabel l = new JLabel();
-
-        String str1 = "data/backGround1/Screen Shot ";
-        String str2 = "2022-03-21 at 09.31.13.png";
-        String path = str1 + str2;
-        ImageIcon img = new ImageIcon(path);
-
-        l.setIcon(img);
-
-        jp.setBounds(0,0, img.getIconWidth(),img.getIconHeight());
-        jp.add(l);
-
-
-        lp.add(jp, JLayeredPane.DEFAULT_LAYER);
-
-        frame.setLayeredPane(lp);
-        */
-
-        addButton(panel);
-
-        addBackground();
-
-
-
-
-    }
-
-
-    private void setTitle() {
-        setTitle("My Diary");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 600, 400);
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(contentPane);
-        //must not ignore setLayout method
-        contentPane.setLayout(null);
-    }
-
-    private static void addButton(JPanel panel) {
-        panel.setLayout(null);
+        p.setLayout(null);
         // helper method to add button
+        addButton(p);
+
+
+        this.setVisible(true);
+    }
+
+    private void addButton(JPanel p) {
         JButton loadButton = new JButton("Load");
         loadButton.setBackground(Color.GREEN);
         loadButton.setForeground(Color.BLACK);
-        loadButton.setBounds(300,100,200,100);
-        loadButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame frame = new SecondPage("Main Panel");
-                frame.setVisible(true);
-                frame.setLayout(null);
+        loadButton.setBounds(150, 100, 200, 100);
+        p.add(loadButton);
 
-            }
-        });
-        panel.add(loadButton);
+        //loadButton.addActionListener(new ActionListener() {
+           // @Override
+           // public void actionPerformed(ActionEvent e) {
+            //    startPage.dispose();
+
+                //JFrame frame = new SecondPage();
+                //frame.setVisible(true);
+                //frame.setSize(600,600);
+                //frame.setLocation(100,50);
+         //   }
+      //  });
 
     }
 
 
-    private void addBackground() {
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
+    private JPanel addBackground() {
 
-        double panelWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-        double panelHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 25 - 25 - 20;
-        String path = "data/Screen Shot 2022-03-21 at 12.58.18.png";
-        BackgroundPanel imgPanel = new BackgroundPanel(panelWidth, panelHeight,path);
-        imgPanel.setOpaque(false);
-        setLayout(null);
+        int panelWidth = this.getWidth();
+        int panelHeight = this.getHeight();
+        String path = "/Users/isabella/Desktop/CPSC 210/project_h2j2s/data/Screen Shot 2022-03-21 at 12.58.18.png";
+        BackgroundPanel imgPanel = new BackgroundPanel(panelWidth, panelHeight, path);
 
-        this.contentPane.add(imgPanel, -1);
+        return imgPanel;
     }
-
 
 
 }

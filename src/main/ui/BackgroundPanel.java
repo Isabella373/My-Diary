@@ -1,7 +1,10 @@
 package ui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 public class BackgroundPanel extends JPanel {
     private int width = 0;
@@ -29,7 +32,13 @@ public class BackgroundPanel extends JPanel {
         Graphics2D g = (Graphics2D) gs;
         super.paintComponent(g);
 
-        Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource(imgPath));
+        //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource(imgPath));
+        Image image = null;
+        try {
+            image = ImageIO.read(new File(imgPath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         gs.drawImage(image, 0, 0, width, height, this);
     }
 }
