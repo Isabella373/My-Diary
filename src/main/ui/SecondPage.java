@@ -4,8 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+
 
 public class SecondPage extends JFrame {
     public SecondPage() throws InterruptedException {
@@ -39,18 +38,4 @@ public class SecondPage extends JFrame {
 
     }
 
-
-    private void disappear() throws InterruptedException {
-        int panelWidth = this.getWidth();
-        int panelHeight = this.getHeight();
-        String path = "/Users/isabella/Desktop/CPSC 210/project_h2j2s/data/Loading111.png";
-        BackgroundPanel imgPanel = new BackgroundPanel(panelWidth, panelHeight, path);
-
-        JPanel p = imgPanel;
-        this.setContentPane(p);
-
-        p.setLayout(null);
-        this.setVisible(false);
-        p.setVisible(false);
-    }
 }
