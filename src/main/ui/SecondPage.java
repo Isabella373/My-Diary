@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class SecondPage extends JFrame {
     public SecondPage() throws InterruptedException {
         super("");
-        this.setSize(600, 600);
+        this.setSize(800, 800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         this.setTitle("Loading");
@@ -25,7 +25,7 @@ public class SecondPage extends JFrame {
         p.setLayout(null);
         this.setVisible(true);
 
-        Timer t = new Timer(3000, null);
+        Timer t = new Timer(2500, null);
         t.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

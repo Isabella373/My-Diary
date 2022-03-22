@@ -15,7 +15,7 @@ public class StartPage extends JFrame {
 
     public StartPage() {
         super("");
-        this.setSize(600, 600);
+        this.setSize(800, 800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         this.setTitle("My Diary");
@@ -35,7 +35,8 @@ public class StartPage extends JFrame {
         JButton loadButton = new JButton("Load");
         loadButton.setBackground(Color.GREEN);
         loadButton.setForeground(Color.BLACK);
-        loadButton.setBounds(150, 100, 200, 100);
+        loadButton.setBounds(300, 400, 200, 100);
+        loadButton.setFont(new Font("bold",Font.BOLD, 40));
         p.add(loadButton);
         loadButton.addActionListener(new ActionListener() {
             @Override
