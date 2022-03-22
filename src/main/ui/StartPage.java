@@ -2,23 +2,23 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class StartPage extends JFrame {
+    StartPage page;
 
     public static void main(String[] args) {
         StartPage startPage = new StartPage();
     }
 
 
-
     public StartPage() {
         super("");
-
         this.setSize(600, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         this.setTitle("My Diary");
-        //this.setLayout(null);
 
         JPanel p = addBackground();
         this.setContentPane(p);
@@ -37,19 +37,17 @@ public class StartPage extends JFrame {
         loadButton.setForeground(Color.BLACK);
         loadButton.setBounds(150, 100, 200, 100);
         p.add(loadButton);
-
-        //loadButton.addActionListener(new ActionListener() {
-           // @Override
-           // public void actionPerformed(ActionEvent e) {
-            //    startPage.dispose();
-
-                //JFrame frame = new SecondPage();
-                //frame.setVisible(true);
-                //frame.setSize(600,600);
-                //frame.setLocation(100,50);
-         //   }
-      //  });
-
+        loadButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                p.setVisible(false);
+                try {
+                    new SecondPage().setVisible(true);
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 
 
