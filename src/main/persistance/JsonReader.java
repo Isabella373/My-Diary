@@ -67,7 +67,8 @@ public class JsonReader {
     private void addDiary(PreviousDiary pd, JSONObject jsonObject) {
         String title = jsonObject.getString("title");
         Category category = Category.valueOf(jsonObject.getString("category"));
-        TodayDiary td = new TodayDiary(title, category);
+        String words = jsonObject.getString("story");
+        TodayDiary td = new TodayDiary(title, category,words);
         pd.addDiary(td);
     }
 

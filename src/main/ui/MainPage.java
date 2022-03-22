@@ -2,11 +2,15 @@ package ui;
 
 import model.PreviousDiary;
 import model.TodayDiary;
+import org.json.JSONObject;
 import persistance.JsonReader;
 import persistance.JsonWriter;
+import sun.tools.jconsole.JConsole;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.ByteArrayOutputStream;
+import java.io.Console;
 import java.io.IOException;
 import java.util.List;
 
@@ -17,7 +21,6 @@ public class MainPage extends JFrame {
     JButton add;
     JButton quit;
     private PreviousDiary previousDiary;
-    private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private static final String JSON_STONE = "./data/todaydiary.txt";
 
@@ -26,7 +29,6 @@ public class MainPage extends JFrame {
         super("");
 
         previousDiary = new PreviousDiary("My Diaries");
-        jsonWriter = new JsonWriter(JSON_STONE);
         jsonReader = new JsonReader(JSON_STONE);
 
         this.setSize(800, 800);
@@ -79,25 +81,21 @@ public class MainPage extends JFrame {
 
         loadDiaries();
 
-        String str = printDiaries();
-        text = new JLabel(str);
-        text.setFont(new Font("Bond", Font.BOLD, 20));
-        text.setBounds(0, 150, 800, 700);
-        text.setBackground(Color.BLACK);
-        text.setForeground(Color.WHITE);
-        text.setOpaque(true);
-        p.add(text);
-
-    }
-
-    private String printDiaries() {
         List<TodayDiary> diaries = previousDiary.getPreviousDiary();
-        String tx = "";
+        int i = 0;
         for (TodayDiary td : diaries) {
-            tx = tx + td.toString() + "\r\n";
+            text = new JLabel("");
+            text.setFont(new Font("Bond", Font.BOLD, 20));
+            text.setBounds(0, 160 + i, 800, 50);
+            text.setBackground(Color.BLACK);
+            text.setForeground(Color.WHITE);
+            text.setOpaque(true);
+            text.setText(td.toString());
+            i = i + 60;
+            p.add(text);
         }
-        return tx;
     }
+
 
     private void loadDiaries() {
         try {

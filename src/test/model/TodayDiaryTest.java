@@ -11,7 +11,7 @@ public class TodayDiaryTest {
 
     @BeforeEach
     void runBefore() {
-        testDiary = new TodayDiary("Monday", HAPPY);
+        testDiary = new TodayDiary("Monday", HAPPY,"");
 
 
     }

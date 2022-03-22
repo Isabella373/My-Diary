@@ -52,8 +52,8 @@ public class JsonWriterTest extends JsonTest {
     void testWriterGeneralDiary() {
         try {
             PreviousDiary pd = new PreviousDiary("My diary");
-            pd.addDiary(new TodayDiary("Monday", HAPPY));
-            pd.addDiary(new TodayDiary("Tuesday", SAD));
+            pd.addDiary(new TodayDiary("Monday", HAPPY,""));
+            pd.addDiary(new TodayDiary("Tuesday", SAD,""));
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralDiary.txt");
             writer.open();
             writer.write(pd);

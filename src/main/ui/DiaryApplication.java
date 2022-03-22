@@ -127,7 +127,7 @@ public class DiaryApplication {
         System.out.println("Please enter the time right now");
         String title = input.next();
         TodayDiary td;
-        td = new TodayDiary(title, category);
+        td = new TodayDiary(title, category,"");
         System.out.println("Please enter your story");
         String story = input.next();
         td.addWords(story);

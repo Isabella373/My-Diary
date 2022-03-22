@@ -15,9 +15,9 @@ public class TodayDiary implements Writable {
     private Category category;
 
 
-    public TodayDiary(String t, Category category) {
+    public TodayDiary(String t, Category category,String words) {
         this.title = t;
-        this.words = "";
+        this.words = words;
         this.category = category;
 
 
