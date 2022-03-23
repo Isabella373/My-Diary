@@ -59,7 +59,7 @@ public class YesOrNoPage extends JFrame {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GoodbyePage().setVisible(true);
+                new SaveSuccessPage().setVisible(true);
                 savePreviousDiaries();
             }
         });

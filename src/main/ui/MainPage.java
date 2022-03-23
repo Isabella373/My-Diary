@@ -49,7 +49,7 @@ public class MainPage extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MainPage.this.setVisible(false);
-                new GoodbyePage().setVisible(true);
+                new SaveSuccessPage().setVisible(true);
                 savePreviousDiaries();
 
             }
@@ -66,7 +66,7 @@ public class MainPage extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MainPage.this.setVisible(false);
-                new EditDiaryPage().setVisible(true);
+                new FeelingPage().setVisible(true);
             }
         });
 
