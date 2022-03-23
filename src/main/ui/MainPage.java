@@ -3,16 +3,19 @@ package ui;
 import model.PreviousDiary;
 import model.TodayDiary;
 import persistance.JsonReader;
+import persistance.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
 public class MainPage extends JFrame {
     private PreviousDiary previousDiary;
+    private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private static final String JSON_STONE = "./data/todaydiary.txt";
 
@@ -21,6 +24,7 @@ public class MainPage extends JFrame {
         super("");
 
         previousDiary = new PreviousDiary("My Diaries");
+        jsonWriter = new JsonWriter(JSON_STONE);
         jsonReader = new JsonReader(JSON_STONE);
 
         this.setSize(800, 800);
@@ -46,6 +50,7 @@ public class MainPage extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 MainPage.this.setVisible(false);
                 new GoodbyePage().setVisible(true);
+                savePreviousDiaries();
 
             }
         });
@@ -89,6 +94,21 @@ public class MainPage extends JFrame {
             i = i + 60;
             p.add(text);
         }
+    }
+
+    // EFFECTS: saves all the diaries to file
+    private void savePreviousDiaries() {
+        // EFFECTS: saves all the diaries to file
+
+        try {
+            jsonWriter.open();
+            jsonWriter.write(previousDiary);
+            jsonWriter.close();
+            System.out.println("Saved" + previousDiary.getName() + "to " + JSON_STONE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STONE);
+        }
+
     }
 
 
