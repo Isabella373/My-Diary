@@ -94,6 +94,13 @@ public class MainPage extends JFrame {
         bar.setForeground(Color.BLACK);
         bar.setOpaque(true);
         p.add(bar);
+        bar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainPage.this.setVisible(false);
+                new ImagePage().setVisible(true);
+            }
+        });
 
         loadDiaries();
 

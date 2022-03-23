@@ -1,8 +1,50 @@
 {
     "name": "My Diaries",
-    "diaries": [{
-        "title": "April / 3 / TUESDAY",
-        "category": "SAD",
-        "story": "31 am"
-    }]
+    "diaries": [
+        {
+            "title": "April / 3 / TUESDAY",
+            "category": "SAD",
+            "story": "31 am"
+        },
+        {
+            "title": "January / 1 / MONDAY",
+            "category": "HAPPY",
+            "story": ""
+        },
+        {
+            "title": "January / 1 / MONDAY",
+            "category": "HAPPY",
+            "story": ""
+        },
+        {
+            "title": "January / 1 / MONDAY",
+            "category": "SAD",
+            "story": ""
+        },
+        {
+            "title": "January / 1 / MONDAY",
+            "category": "ANGRY",
+            "story": ""
+        },
+        {
+            "title": "January / 1 / MONDAY",
+            "category": "ANGRY",
+            "story": ""
+        },
+        {
+            "title": "January / 1 / MONDAY",
+            "category": "ANGRY",
+            "story": ""
+        },
+        {
+            "title": "January / 1 / MONDAY",
+            "category": "ANGRY",
+            "story": ""
+        },
+        {
+            "title": "January / 1 / MONDAY",
+            "category": "CALM",
+            "story": ""
+        }
+    ]
 }
