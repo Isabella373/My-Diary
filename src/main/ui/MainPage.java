@@ -23,84 +23,18 @@ public class MainPage extends JFrame {
     public MainPage() {
         super("");
 
-        previousDiary = new PreviousDiary("My Diaries");
-        jsonWriter = new JsonWriter(JSON_STONE);
-        jsonReader = new JsonReader(JSON_STONE);
+        initial();
 
-        this.setSize(800, 800);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
-        this.setTitle("My Diary");
-        this.setLayout(null);
-
-        JPanel p = new JPanel();
-        this.setContentPane(p);
-        p.setLayout(null);
+        JPanel p = base();
 
 
-        JButton save = new JButton("Save");
-        save.setFont(new Font("Bond", Font.BOLD, 30));
-        save.setBounds(190, 0, 100, 60);
-        save.setBackground(Color.GREEN);
-        save.setForeground(Color.BLACK);
-        save.setOpaque(true);
-        p.add(save);
-        save.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainPage.this.setVisible(false);
-                new SaveSuccessPage().setVisible(true);
-                savePreviousDiaries();
+        saveButton(p);
 
-            }
-        });
-
-        JButton add = new JButton("+");
-        add.setFont(new Font("Bond", Font.BOLD, 30));
-        add.setBounds(310, 0, 100, 60);
-        add.setBackground(Color.PINK);
-        add.setForeground(Color.BLACK);
-        add.setOpaque(true);
-        p.add(add);
-        add.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainPage.this.setVisible(false);
-                new FeelingPage().setVisible(true);
-            }
-        });
+        addButton(p);
 
 
-        JButton quit = new JButton("Quit");
-        quit.setFont(new Font("Bond", Font.BOLD, 30));
-        quit.setBounds(430, 0, 100, 60);
-        quit.setBackground(Color.RED);
-        quit.setForeground(Color.BLACK);
-        quit.setOpaque(true);
-        p.add(quit);
-        quit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainPage.this.setVisible(false);
-                new YesOrNoPage().setVisible(true);
-
-            }
-        });
-
-        JButton bar = new JButton("Column Chart [HAPPY * SAD * ANGRY * CALM]");
-        bar.setFont(new Font("Bond", Font.BOLD, 30));
-        bar.setBounds(20, 70, 760, 60);
-        bar.setBackground(Color.BLUE);
-        bar.setForeground(Color.BLACK);
-        bar.setOpaque(true);
-        p.add(bar);
-        bar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainPage.this.setVisible(false);
-                new ImagePage().setVisible(true);
-            }
-        });
+        quitButton(p);
+        barCharButton(p);
 
         loadDiaries();
 
@@ -117,6 +51,109 @@ public class MainPage extends JFrame {
             i = i + 60;
             p.add(text);
         }
+    }
+
+    //EFFECTS: create a new char button to show the bar chart
+
+    private void barCharButton(JPanel p) {
+        JButton bar = new JButton("Column Chart [HAPPY * SAD * ANGRY * CALM]");
+        bar.setFont(new Font("Bond", Font.BOLD, 30));
+        bar.setBounds(20, 70, 760, 60);
+        bar.setBackground(Color.BLUE);
+        bar.setForeground(Color.BLACK);
+        bar.setOpaque(true);
+        p.add(bar);
+        bar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainPage.this.setVisible(false);
+                new ImagePage().setVisible(true);
+            }
+        });
+    }
+
+    //EFFECTS: create a new quit button
+
+    private void quitButton(JPanel p) {
+        JButton quit = new JButton("Quit");
+        quit.setFont(new Font("Bond", Font.BOLD, 30));
+        quit.setBounds(430, 0, 100, 60);
+        quit.setBackground(Color.RED);
+        quit.setForeground(Color.BLACK);
+        quit.setOpaque(true);
+        p.add(quit);
+        quit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainPage.this.setVisible(false);
+                new YesOrNoPage().setVisible(true);
+
+            }
+        });
+    }
+
+
+    //EFFECTS: create a new add button
+    private void addButton(JPanel p) {
+        JButton add = new JButton("+");
+        add.setFont(new Font("Bond", Font.BOLD, 30));
+        add.setBounds(310, 0, 100, 60);
+        add.setBackground(Color.PINK);
+        add.setForeground(Color.BLACK);
+        add.setOpaque(true);
+        p.add(add);
+        add.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainPage.this.setVisible(false);
+                new FeelingPage().setVisible(true);
+            }
+        });
+    }
+
+    //EFFECTS: create a new save button
+
+    private void saveButton(JPanel p) {
+        JButton save = new JButton("Save");
+        save.setFont(new Font("Bond", Font.BOLD, 30));
+        save.setBounds(190, 0, 100, 60);
+        save.setBackground(Color.GREEN);
+        save.setForeground(Color.BLACK);
+        save.setOpaque(true);
+        p.add(save);
+        save.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainPage.this.setVisible(false);
+                new SaveSuccessPage().setVisible(true);
+                savePreviousDiaries();
+
+            }
+        });
+    }
+
+    // EFFECTS: return a panel as the base
+
+    private JPanel base() {
+        this.setSize(800, 800);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+        this.setTitle("My Diary");
+        this.setLayout(null);
+
+        JPanel p = new JPanel();
+        this.setContentPane(p);
+        p.setLayout(null);
+        return p;
+    }
+
+    // MODIFIES: this
+    //EFFECTS: initialize the field
+
+    private void initial() {
+        previousDiary = new PreviousDiary("My Diaries");
+        jsonWriter = new JsonWriter(JSON_STONE);
+        jsonReader = new JsonReader(JSON_STONE);
     }
 
     // EFFECTS: saves all the diaries to file
