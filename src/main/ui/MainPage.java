@@ -62,6 +62,14 @@ public class MainPage extends JFrame {
         add.setForeground(Color.BLACK);
         add.setOpaque(true);
         p.add(add);
+        add.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainPage.this.setVisible(false);
+                new EditDiaryPage().setVisible(true);
+            }
+        });
+
 
         JButton quit = new JButton("Quit");
         quit.setFont(new Font("Bond", Font.BOLD, 30));
@@ -70,6 +78,14 @@ public class MainPage extends JFrame {
         quit.setForeground(Color.BLACK);
         quit.setOpaque(true);
         p.add(quit);
+        quit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainPage.this.setVisible(false);
+                new YesOrNoPage().setVisible(true);
+
+            }
+        });
 
         JButton bar = new JButton("Column Chart [HAPPY * SAD * ANGRY * CALM]");
         bar.setFont(new Font("Bond", Font.BOLD, 30));
