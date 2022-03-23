@@ -5,47 +5,32 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class StartPage extends JFrame {
-    StartPage page;
-
-    public static void main(String[] args) {
-        StartPage startPage = new StartPage();
-    }
-
-
-    public StartPage() {
+public class GoodbyePage extends JFrame {
+    public GoodbyePage() {
         super("");
         this.setSize(800, 800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        this.setTitle("My Diary");
+        this.setTitle("GoodBye");
 
         JPanel p = addBackground();
         this.setContentPane(p);
 
-        p.setLayout(null);
-        // helper method to add button
         addButton(p);
 
+        p.setLayout(null);
 
         this.setVisible(true);
     }
 
+
     private void addButton(JPanel p) {
-        JButton loadButton = new JButton("Load");
-        loadButton.setBounds(300, 400, 200, 100);
+        JButton loadButton = new JButton("Thanks For Using");
+        loadButton.setBounds(100, 400, 500, 100);
         loadButton.setFont(new Font("bold",Font.BOLD, 40));
         loadButton.setBackground(Color.GREEN);
         loadButton.setForeground(Color.BLACK);
         p.add(loadButton);
-        loadButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                p.setVisible(false);
-                    new SecondPage().setVisible(true);
-
-            }
-        });
     }
 
 
@@ -58,6 +43,4 @@ public class StartPage extends JFrame {
 
         return imgPanel;
     }
-
-
 }

@@ -4,10 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.TimerTask;
 
 
 public class SecondPage extends JFrame {
-    public SecondPage() throws InterruptedException {
+    public SecondPage() {
         super("");
         this.setSize(800, 800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,11 +30,11 @@ public class SecondPage extends JFrame {
         t.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                p.setVisible(false);
-                new MainPage().setVisible(true);
+                SecondPage.this.setVisible(false);
             }
         });
         t.start();
+        new MainPage().setVisible(true);
 
 
     }
