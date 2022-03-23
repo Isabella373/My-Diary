@@ -17,12 +17,13 @@ public class TimePage extends JFrame {
         this.setLayout(null);
         this.setVisible(true);
 
+
         JLabel label = new JLabel();
-        label.setFont(new Font("italic",Font.ITALIC,30));
+        label.setFont(new Font("bold",Font.BOLD,30));
         label.setForeground(Color.ORANGE);
-        label.setText("What Time Is It?");
-        label.setBounds(40,10,800,50);
-        this.add(label);
+        label.setText("Please Enter your Story");
+        label.setBounds(40,120,800,50);
+
 
         this.setLayout(null);
 
@@ -32,6 +33,7 @@ public class TimePage extends JFrame {
         contentPanel.setBorder(new EmptyBorder(5,5,5,5));
         this.setContentPane(contentPanel);
         contentPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+
         JLabel month = new JLabel("MONTH");
         month.setBackground(Color.pink);
         month.setOpaque(true);
@@ -102,6 +104,8 @@ public class TimePage extends JFrame {
         comboBox3.addItem("SATURDAY");
         comboBox3.addItem("SUNDAY");
         contentPanel.add(comboBox3);
+
+        contentPanel.add(label);
 
 
 
