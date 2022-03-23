@@ -1,7 +1,12 @@
 package ui;
 
+import model.Category;
+import model.TodayDiary;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FeelingPage extends JFrame {
     private ImageIcon iconHappy = new ImageIcon("data/HAPPY.jpg");
@@ -49,6 +54,40 @@ public class FeelingPage extends JFrame {
 
         createLayout(l1,l2,l3,l4,button);
         this.setBounds(0,0,800,800);
+
+        JButton loadButton = new JButton("How are you?");
+        loadButton.setBounds(100, 650, 500, 100);
+        loadButton.setFont(new Font("bold",Font.BOLD, 40));
+        loadButton.setBackground(Color.GREEN);
+        loadButton.setForeground(Color.BLACK);
+        this.add(loadButton);
+
+        JButton next = new JButton("NEXT");
+        next.setFont(new Font("Bond", Font.BOLD, 30));
+        next.setBounds(680, 700, 100, 50);
+        next.setBackground(Color.PINK);
+        next.setForeground(Color.BLACK);
+        next.setOpaque(true);
+        this.add(next);
+        next.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FeelingPage.this.setVisible(false);
+                Icon img = button.getIcon();
+                TodayDiary td = new TodayDiary("", Category.HAPPY,"");
+                if (img == iconHappy) {
+                    td = new TodayDiary("", Category.HAPPY,"");
+                } else if (img == iconSad) {
+                    td = new TodayDiary("", Category.SAD,"");
+                } else if (img == iconAngry) {
+                    td = new TodayDiary("", Category.ANGRY,"");
+                } else if (img == iconCalm) {
+                    td = new TodayDiary("", Category.CALM,"");
+                }
+                new TimePage(td).setVisible(true);
+
+            }
+        });
 
 
 
