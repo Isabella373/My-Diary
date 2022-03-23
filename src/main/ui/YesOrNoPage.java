@@ -9,8 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
-
-
+import java.io.IOException;
 
 
 public class YesOrNoPage extends JFrame {
@@ -60,6 +59,7 @@ public class YesOrNoPage extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new SaveSuccessPage().setVisible(true);
+                loadDiaries();
                 savePreviousDiaries();
             }
         });
@@ -78,6 +78,18 @@ public class YesOrNoPage extends JFrame {
             System.out.println("Unable to write to file: " + JSON_STONE);
         }
 
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads previous diaries from the file
+    private void loadDiaries() {
+        try {
+            previousDiary = jsonReader.read();
+            System.out.println("Loaded " + previousDiary.getName() + " from " + JSON_STONE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STONE);
+
+        }
     }
 
 

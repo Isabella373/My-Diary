@@ -1,4 +1,8 @@
 {
     "name": "My Diaries",
-    "diaries": []
+    "diaries": [{
+        "title": "April / 3 / TUESDAY",
+        "category": "SAD",
+        "story": "31 am"
+    }]
 }
