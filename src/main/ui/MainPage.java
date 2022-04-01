@@ -1,5 +1,7 @@
 package ui;
 
+import exception.LogException;
+import model.EventLog;
 import model.PreviousDiary;
 import model.TodayDiary;
 import persistance.JsonReader;
@@ -14,10 +16,12 @@ import java.io.IOException;
 import java.util.List;
 
 public class MainPage extends JFrame {
+    private static final String FILE_DESCRIPTOR = "...file";
     private PreviousDiary previousDiary;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private static final String JSON_STONE = "./data/todaydiary.txt";
+    private ComboBoxModel<String> printCombo;
 
 
     public MainPage() {
@@ -87,7 +91,6 @@ public class MainPage extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 MainPage.this.setVisible(false);
                 new YesOrNoPage().setVisible(true);
-
             }
         });
     }
@@ -114,7 +117,7 @@ public class MainPage extends JFrame {
     //EFFECTS: create a new save button
 
     private void saveButton(JPanel p) {
-        JButton save = new JButton("Save");
+        JButton save = new JButton(new PrintLogAction());
         save.setFont(new Font("Bond", Font.BOLD, 30));
         save.setBounds(190, 0, 100, 60);
         save.setBackground(Color.GREEN);
@@ -127,6 +130,7 @@ public class MainPage extends JFrame {
                 MainPage.this.setVisible(false);
                 new SaveSuccessPage().setVisible(true);
                 savePreviousDiaries();
+
 
             }
         });
@@ -180,4 +184,25 @@ public class MainPage extends JFrame {
 
         }
     }
+
+    private class PrintLogAction extends AbstractAction {
+        PrintLogAction() {
+            super("Print log to...");
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            Printer screenPrinter = new Printer(MainPage.this);
+            try {
+                screenPrinter.printLog(EventLog.getInstance());
+            } catch (LogException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "System Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+
+
 }
+

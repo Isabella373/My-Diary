@@ -28,6 +28,7 @@ public class PreviousDiary implements Writable {
     // EFFECTS: adds diaries to previous diary
     public void addDiary(TodayDiary td) {
         diaries.add(td);
+        EventLog.getInstance().logEvent(new Event("Add a new diary to the Previous diaries"));
     }
 
 

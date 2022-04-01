@@ -19,6 +19,8 @@ public class TodayDiary implements Writable {
         this.title = t;
         this.words = words;
         this.category = category;
+        EventLog.getInstance().logEvent(new Event("New Category " + category + " was added to the diary"));
+        EventLog.getInstance().logEvent(new Event("New time " + t + " was added to the diary"));
 
 
     }
@@ -45,6 +47,7 @@ public class TodayDiary implements Writable {
     //EFFECTS: add new sentences to the diary
     public void addWords(String str) {
         this.words = this.getWords() + str;
+        EventLog.getInstance().logEvent((new Event("str " + " was added to the diary")));
     }
 
     // EFFECTS: structure string representation of the thingy

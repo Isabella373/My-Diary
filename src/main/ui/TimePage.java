@@ -1,6 +1,6 @@
 package ui;
 
-import model.Category;
+
 import model.PreviousDiary;
 import model.TodayDiary;
 import persistance.JsonReader;
@@ -11,7 +11,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
