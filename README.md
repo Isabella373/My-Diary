@@ -31,10 +31,22 @@
 - reminded to save my diary list to file and have the option to do so or not.
 - As a user, when I start the application, I want to be given the option to load my diary 
 - from file.
-- 
+
+
+## Phase 4 Task 2 (Sample)
+Fri Apr 01 05:04:08 PDT 2022
+New Category SAD was added to the diary
+
+Fri Apr 01 05:04:08 PDT 2022
+New time April / 1 / FRIDAY was added to the diary
+
+Fri Apr 01 05:04:08 PDT 2022
+Add a new diary to the Previous diaries
 
 
 
 ## In the end
 It is an application for everyone who would like to record daily life and spending 
+
+
 

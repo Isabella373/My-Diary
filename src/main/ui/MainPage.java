@@ -79,7 +79,8 @@ public class MainPage extends JFrame {
     //EFFECTS: create a new quit button
 
     private void quitButton(JPanel p) {
-        JButton quit = new JButton("Quit");
+        JButton quit = new JButton(new PrintLogAction());
+        quit.setText("Quit");
         quit.setFont(new Font("Bond", Font.BOLD, 30));
         quit.setBounds(430, 0, 100, 60);
         quit.setBackground(Color.RED);
@@ -118,6 +119,7 @@ public class MainPage extends JFrame {
 
     private void saveButton(JPanel p) {
         JButton save = new JButton(new PrintLogAction());
+        save.setText("Save");
         save.setFont(new Font("Bond", Font.BOLD, 30));
         save.setBounds(190, 0, 100, 60);
         save.setBackground(Color.GREEN);

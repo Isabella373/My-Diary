@@ -1,8 +1,4 @@
 {
     "name": "My Diaries",
-    "diaries": [{
-        "title": "April / 1 / FRIDAY",
-        "category": "SAD",
-        "story": "So tired !!!"
-    }]
+    "diaries": []
 }
