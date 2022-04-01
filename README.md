@@ -43,6 +43,17 @@ New time April / 1 / FRIDAY was added to the diary
 Fri Apr 01 05:04:08 PDT 2022
 Add a new diary to the Previous diaries
 
+## Phase 4 Task 3 (Changes)
+1. Since YesOrNOPage, ImagePage,MainPage all have one JsonWriter and one JsonReader as field,
+and they all extend JFrame, the Structure of them are relatively very similar, I will create an 
+abstract class for these three class to extend, so that the code will be more simplified
+2. Since there are 6 Class (SecondPage, StartPage, TimePage, SaveSuccessfulPage, GoodbyePage and FeelingPage)
+they all extend JFrame and all have same fields and similar code structure, I can also create 
+a class for them to extend
+3. I will simplify the replicated code in the MainPage class, because I added many buttons to the
+main page, the code for these buttons are duplicated, only the behaviour after we press the buttons
+are different.
+
 
 
 ## In the end
