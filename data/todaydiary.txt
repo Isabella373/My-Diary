@@ -1,4 +1,15 @@
 {
     "name": "My Diaries",
-    "diaries": []
+    "diaries": [
+        {
+            "title": "April / 4 / MONDAY",
+            "category": "HAPPY",
+            "story": "Phase 4"
+        },
+        {
+            "title": "January / 1 / MONDAY",
+            "category": "HAPPY",
+            "story": "Hello There"
+        }
+    ]
 }
